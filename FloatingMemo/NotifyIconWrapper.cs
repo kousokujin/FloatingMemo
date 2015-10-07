@@ -11,7 +11,7 @@ namespace FloatingMemo
     public partial class NotifyIconWrapper : Component
     {
 
-        List<memo_window> memo_list;
+        public List<memo_window> memo_list = null;
 
         //---------以下イベント------------------
         public NotifyIconWrapper()
@@ -37,6 +37,10 @@ namespace FloatingMemo
         private void add_memo_click(object sender,EventArgs e)  //タスクバーの新規メモ作成ボタン
         {
             memo_window new_window = new memo_window();
+            if(memo_list == null)
+            {
+                memo_list = new List<memo_window>();
+            }
             new_window.Show();
             memo_list.Add(new_window);
         }
