@@ -58,7 +58,7 @@ namespace FloatingMemo
         }
         */
 
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)  //移動
         {
             if (e.ButtonState != MouseButtonState.Pressed)
             {
@@ -67,6 +67,11 @@ namespace FloatingMemo
 
             this.DragMove();
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e) //閉じるボタン
+        {
+            this.Close();
         }
         
     }
