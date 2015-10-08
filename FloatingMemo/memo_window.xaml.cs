@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Forms;
 
 namespace FloatingMemo
 {
@@ -19,9 +20,54 @@ namespace FloatingMemo
     /// </summary>
     public partial class memo_window : Window
     {
+
+        private Point mousePoint;
+
         public memo_window()
         {
             InitializeComponent();
+
         }
+
+        public void Monitor_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                //フォームの移動
+                this.Left += e.X + mousePoint.X;
+                this.Top += e.Y + mousePoint.Y;
+            }
+        }
+
+        public void Monitor_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                //左クリックの場合のみ位置を記憶
+                mousePoint = new Point(-e.X, -e.Y);
+            }
+        }
+
+        /*
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+        }
+
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+        }
+        */
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ButtonState != MouseButtonState.Pressed)
+            {
+                return;
+            }
+
+            this.DragMove();
+
+        }
+        
     }
 }
