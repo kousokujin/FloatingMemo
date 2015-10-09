@@ -19,7 +19,7 @@ namespace FloatingMemo
         {
             base.OnStartup(e);
             this.ShutdownMode = ShutdownMode.OnExplicitShutdown;
-            this.notifyIcon = new NotifyIconWrapper();
+            this.notifyIcon = new NotifyIconWrapper();      
         }
 
         protected override void OnExit(ExitEventArgs e)

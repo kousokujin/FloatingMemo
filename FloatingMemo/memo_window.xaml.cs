@@ -26,6 +26,8 @@ namespace FloatingMemo
         public memo_window()
         {
             InitializeComponent();
+            memo_textbox.Width = this.Width;
+            memo_textbox.Height = this.Height-28;
 
         }
 
@@ -48,16 +50,6 @@ namespace FloatingMemo
             }
         }
 
-        /*
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-        }
-
-        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-        }
-        */
-
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)  //移動
         {
             if (e.ButtonState != MouseButtonState.Pressed)
@@ -72,6 +64,22 @@ namespace FloatingMemo
         private void Button_Click(object sender, RoutedEventArgs e) //閉じるボタン
         {
             this.Close();
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            memo_textbox.Width = this.Width;
+            memo_textbox.Height = this.Height - 28;
+        }
+
+        private void Font_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new FontDialog();
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                memo_textbox.FontFamily = new FontFamily(dlg.Font.FontFamily.Name);
+                memo_textbox.FontSize = dlg.Font.SizeInPoints;
+            }
         }
         
     }
