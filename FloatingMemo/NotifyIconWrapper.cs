@@ -37,11 +37,15 @@ namespace FloatingMemo
         private void add_memo_click(object sender,EventArgs e)  //タスクバーの新規メモ作成ボタン
         {
             memo_window new_window = new memo_window();
+            change_titile_window change = new change_titile_window(new_window);
+
             if(memo_list == null)
             {
                 memo_list = new List<memo_window>();
             }
+
             new_window.Show();
+            change.Show();     //タイトル名設定ウィンドウ表示
             memo_list.Add(new_window);
         }
     }
