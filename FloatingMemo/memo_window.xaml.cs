@@ -30,27 +30,6 @@ namespace FloatingMemo
 
         }
 
-        /*
-        public void Monitor_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
-            {
-                //フォームの移動
-                this.Left += e.X + mousePoint.X;
-                this.Top += e.Y + mousePoint.Y;
-            }
-        }
-
-        public void Monitor_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
-            {
-                //左クリックの場合のみ位置を記憶
-                mousePoint = new Point(-e.X, -e.Y);
-            }
-        }
-        */
-
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)  //移動
         {
             if (e.ButtonState != MouseButtonState.Pressed)
@@ -77,17 +56,6 @@ namespace FloatingMemo
         private void Font_cahnge_menu_Click(object sender, RoutedEventArgs e)   //フォント変更
         {
             var dlg = new FontDialog();
-            dlg.ShowColor = true;
-            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                memo_textbox.FontFamily = new FontFamily(dlg.Font.FontFamily.Name);
-                memo_textbox.FontSize = dlg.Font.SizeInPoints;
-            }
-        }
-
-        private void RightClick_menu_font_Click(object sender, RoutedEventArgs e)
-        {
-            var dlg = new FontDialog();
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 memo_textbox.FontFamily = new FontFamily(dlg.Font.FontFamily.Name);
@@ -107,15 +75,6 @@ namespace FloatingMemo
             window.Show();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)   //フォントカラー変更
-        {
-            ColorDialog cd = new ColorDialog();
-            if(cd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                Color color = Color.FromArgb(cd.Color.A, cd.Color.R, cd.Color.G, cd.Color.B);
-                memo_textbox.Foreground = new SolidColorBrush(color);
-            }
-        }
 
         private void memo_textcolor_Click(object sender, RoutedEventArgs e)
         {
@@ -124,6 +83,44 @@ namespace FloatingMemo
             {
                 Color color = Color.FromArgb(cd.Color.A, cd.Color.R, cd.Color.G, cd.Color.B);
                 memo_textbox.Foreground = new SolidColorBrush(color);
+            }
+        }
+                    
+        private void BackColorMenu_right_Click(object sender, RoutedEventArgs e)    //背景色の変更
+        {
+            ColorDialog cd = new ColorDialog();
+            if (cd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Color color = Color.FromArgb(cd.Color.A, cd.Color.R, cd.Color.G, cd.Color.B);
+                Background = new SolidColorBrush(color);
+            }
+        }
+
+        private void titile_hidden_Click(object sender, RoutedEventArgs e)  //タイトル非表示
+        {
+            if(titile_hidden_2.IsChecked)
+            {
+                title_label.Visibility = Visibility.Hidden;
+                title_hidden.IsChecked = true;
+            }
+            else
+            {
+                title_label.Visibility = Visibility.Visible;
+                title_hidden.IsChecked = false;
+            }
+        }
+
+        private void title_hidden_Click(object sender, RoutedEventArgs e)
+        {
+            if (title_hidden.IsChecked)
+            {
+                title_label.Visibility = Visibility.Hidden;
+                titile_hidden_2.IsChecked = true;
+            }
+            else
+            {
+                title_label.Visibility = Visibility.Visible;
+                titile_hidden_2.IsChecked = false;
             }
         }
     }

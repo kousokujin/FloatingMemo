@@ -1,7 +1,7 @@
 ﻿<Window x:Class="FloatingMemo.memo_window"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="memo_window" Height="181.863" Width="279.921" MouseLeftButtonDown="Window_MouseLeftButtonDown" WindowStyle="None" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" SizeChanged="Window_SizeChanged" Background="#FFC5DC93">
+        Title="memo_window" Height="181.863" Width="279.921" MouseLeftButtonDown="Window_MouseLeftButtonDown" WindowStyle="None" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" SizeChanged="Window_SizeChanged" Background="#FFE4F06E">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="{x:Static SystemParameters.CaptionHeight}"
@@ -26,23 +26,27 @@
                             <MenuItem x:Name="memo_textcolor" Header="文字の色" Click="memo_textcolor_Click"/>
                         </MenuItem>
                         <MenuItem x:Name="Change_titile" Header="タイトルの変更" Click="Change_titile_Click" />
+                        <MenuItem x:Name="BackColorMenu_right" Header="背景色の変更" Click="BackColorMenu_right_Click"/>
+                        <MenuItem x:Name="titile_hidden_2" Header="タイトルの非表示" IsCheckable="True" Click="titile_hidden_Click"/>
                     </ContextMenu>
                 </ContextMenuService.ContextMenu>
 
             </Button>
             <Button Content="r" Style="{DynamicResource CaptionButtonStyleKey}" Click="Button_Click" />
         </StackPanel>
-        
-        <TextBox x:Name="memo_textbox" HorizontalAlignment="Left" Height="24" Margin="0,28,0,0" TextWrapping="Wrap" Text="text" VerticalAlignment="Top" Width="96" AcceptsReturn="True" Background="{x:Null}" SelectionBrush="#FF13B2A4" BorderBrush="{x:Null}" Foreground="Black">
+
+        <TextBox x:Name="memo_textbox" HorizontalAlignment="Left" Height="24" Margin="0,28,0,0" TextWrapping="Wrap" Text="text" VerticalAlignment="Top" Width="96" AcceptsReturn="True" Background="{x:Null}" SelectionBrush="#FF13B2A4" BorderBrush="{x:Null}" Foreground="Black" BorderThickness="0">
             <TextBox.ContextMenu>
                 <ContextMenu >
                     <MenuItem Header="非表示"/>
                     <MenuItem Header="オプション"/>
                     <MenuItem Header="文字">
-                        <MenuItem x:Name="RightClick_menu_font" Header="フォント" Click="RightClick_menu_font_Click"/>
-                        <MenuItem Header="文字の色" Click="MenuItem_Click"/>
+                        <MenuItem x:Name="RightClick_menu_font" Header="フォント" Click="Font_cahnge_menu_Click"/>
+                        <MenuItem Header="文字の色" Click="memo_textcolor_Click"/>
                     </MenuItem>
-                    <MenuItem x:Name="Change_titile_Right" Header="タイトルの変更" Click="Change_titile_Right_Click"/>
+                    <MenuItem x:Name="Change_titile_Right" Header="タイトルの変更" Click="Change_titile_Click"/>
+                    <MenuItem x:Name="BackColorMenu" Header="背景色の変更" Click="BackColorMenu_right_Click"/>
+                    <MenuItem x:Name="title_hidden" Header="タイトルの非表示" Click="title_hidden_Click" IsCheckable="True"/>
                     <Separator/>
                     <MenuItem Header="切り取り(_T)" Command="ApplicationCommands.Cut"/>
                     <MenuItem Header="コピー(_C)" Command="ApplicationCommands.Copy"/>
