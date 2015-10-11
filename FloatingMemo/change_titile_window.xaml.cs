@@ -47,6 +47,7 @@ namespace FloatingMemo
         private void OK_button_Click(object sender, RoutedEventArgs e)  //OKボタン
         {
             memo_win.title_label.Content = titile_textbox.Text;
+            memo_win.setting.Synchronism();
             Close();
         }
     }

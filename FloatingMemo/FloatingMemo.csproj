@@ -80,6 +80,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="memo_setting.cs" />
     <Compile Include="memo_window.xaml.cs">
       <DependentUpon>memo_window.xaml</DependentUpon>
     </Compile>

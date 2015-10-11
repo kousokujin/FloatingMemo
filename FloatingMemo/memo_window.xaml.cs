@@ -20,13 +20,20 @@ namespace FloatingMemo
     /// </summary>
     public partial class memo_window : Window
     {
+        public memo_setting setting;
 
+        public void memo_Syncro()
+        {
+            
+        }
 
         public memo_window()
         {
             InitializeComponent();
             memo_textbox.Width = this.Width;
             memo_textbox.Height = this.Height-28;
+
+            setting = new memo_setting(this);
 
         }
 
@@ -63,18 +70,11 @@ namespace FloatingMemo
             }
         }
 
-        private void Change_titile_Right_Click(object sender, RoutedEventArgs e)    //タイトル変更
+        private void Change_titile_Click(object sender, RoutedEventArgs e)  //タイトル変更
         {
             change_titile_window window = new change_titile_window(this);
             window.Show();
         }
-
-        private void Change_titile_Click(object sender, RoutedEventArgs e)
-        {
-            change_titile_window window = new change_titile_window(this);
-            window.Show();
-        }
-
 
         private void memo_textcolor_Click(object sender, RoutedEventArgs e)
         {
@@ -102,11 +102,13 @@ namespace FloatingMemo
             {
                 title_label.Visibility = Visibility.Hidden;
                 title_hidden.IsChecked = true;
+                setting.Synchronism();
             }
             else
             {
                 title_label.Visibility = Visibility.Visible;
                 title_hidden.IsChecked = false;
+                setting.Synchronism();
             }
         }
 
@@ -116,12 +118,28 @@ namespace FloatingMemo
             {
                 title_label.Visibility = Visibility.Hidden;
                 titile_hidden_2.IsChecked = true;
+                setting.Synchronism();
             }
             else
             {
                 title_label.Visibility = Visibility.Visible;
                 titile_hidden_2.IsChecked = false;
+                setting.Synchronism();
             }
+        }
+
+        private void TopMost_bar_Click(object sender, RoutedEventArgs e)    //常に最前面
+        {
+            Topmost = TopMost_bar.IsChecked;
+            Topmost_Right.IsChecked = TopMost_bar.IsChecked;
+            setting.Synchronism();
+        }
+
+        private void Topmost_Right_Click(object sender, RoutedEventArgs e)
+        {
+            Topmost = Topmost_Right.IsChecked;
+            TopMost_bar.IsChecked = Topmost_Right.IsChecked;
+            setting.Synchronism();
         }
     }
 }
