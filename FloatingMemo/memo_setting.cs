@@ -36,6 +36,7 @@ namespace FloatingMemo
                 title_hidden = true;
             }
 
+            //デバッグ用
             System.Console.WriteLine("title:{0} hidden:{1}", title,title_hidden);
             System.Console.WriteLine("topmost:{0}", topmost);
         }

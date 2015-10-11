@@ -22,11 +22,6 @@ namespace FloatingMemo
     {
         public memo_setting setting;
 
-        public void memo_Syncro()
-        {
-            
-        }
-
         public memo_window()
         {
             InitializeComponent();
