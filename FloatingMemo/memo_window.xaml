@@ -27,6 +27,8 @@
                         <MenuItem x:Name="BackColorMenu_right" Header="背景色の変更" Click="BackColorMenu_right_Click"/>
                         <MenuItem x:Name="titile_hidden_2" Header="タイトルの非表示" IsCheckable="True" Click="titile_hidden_Click"/>
                         <MenuItem x:Name="TopMost_bar" Header="常に最前面" IsCheckable="True" Click="TopMost_bar_Click"/>
+                        <Separator/>
+                        <MenuItem x:Name="property_menu" Header="プロパティ" Click="property_menu_Click"/>
                     </ContextMenu>
                 </ContextMenuService.ContextMenu>
 
@@ -45,6 +47,8 @@
                     <MenuItem x:Name="BackColorMenu" Header="背景色の変更" Click="BackColorMenu_right_Click"/>
                     <MenuItem x:Name="title_hidden" Header="タイトルの非表示" Click="title_hidden_Click" IsCheckable="True"/>
                     <MenuItem x:Name="Topmost_Right" Header="常に最前面" IsCheckable="True" Click="Topmost_Right_Click"/>
+                    <Separator/>
+                    <MenuItem x:Name="property_right" Header="プロパティ" Click="property_menu_Click"/>
                     <Separator/>
                     <MenuItem Header="切り取り(_T)" Command="ApplicationCommands.Cut"/>
                     <MenuItem Header="コピー(_C)" Command="ApplicationCommands.Copy"/>

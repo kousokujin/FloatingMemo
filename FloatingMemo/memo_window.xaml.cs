@@ -21,6 +21,7 @@ namespace FloatingMemo
     public partial class memo_window : Window
     {
         public memo_setting setting;
+        public property_window property;
 
         public memo_window()
         {
@@ -29,6 +30,18 @@ namespace FloatingMemo
             memo_textbox.Height = this.Height-28;
 
             setting = new memo_setting(this);
+
+        }
+
+        private void GenerateID()
+        {
+            int seed = Environment.TickCount;
+            Random rad_1 = new Random(seed);
+            Random rad_2 = new Random(++seed);
+            int hex = Convert.ToInt32("0xFFFFFFFF", 10);
+            int intrand_1 = rad_1.Next(0,hex);
+            int intrand_2 = rad_2.Next(0, hex);
+            string str = string.Format("{0:X}{1:X}", intrand_1, intrand_2);
 
         }
 
@@ -45,6 +58,7 @@ namespace FloatingMemo
 
         private void Button_Click(object sender, RoutedEventArgs e) //閉じるボタン
         {
+            System.Console.WriteLine("close:{0}",setting.memoID);
             this.Close();
         }
 
@@ -135,6 +149,12 @@ namespace FloatingMemo
             Topmost = Topmost_Right.IsChecked;
             TopMost_bar.IsChecked = Topmost_Right.IsChecked;
             setting.Synchronism();
+        }
+
+        private void property_menu_Click(object sender, RoutedEventArgs e)
+        {
+            property = new property_window(this);
+            property.Show();
         }
     }
 }
