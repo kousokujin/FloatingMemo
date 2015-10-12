@@ -76,6 +76,20 @@ namespace FloatingMemo
                 memo.title_label.Visibility = Visibility.Visible;
                 memo.syncpropartywindow();
             }
+
+            setting.Synchronism();
+        }
+
+
+        private void opt_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+           // memo.Opacity = opt_slider.Value / 100;
+           //opt_label.Content = string.Format("{0}",opt_slider.Value);
+        }
+
+        private void OK_button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
