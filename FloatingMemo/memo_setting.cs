@@ -10,10 +10,10 @@ namespace FloatingMemo
     public class memo_setting
     {
         memo_window memo;
-        string title;   //タイトル
+        public string title;   //タイトル
         string content; //内容
-        bool topmost;   //常に最前面
-        bool title_hidden; //タイトル非表示
+        public bool topmost;   //常に最前面
+        public bool title_hidden; //タイトル非表示
         public string memoID;
 
         public memo_setting(memo_window memo_w)

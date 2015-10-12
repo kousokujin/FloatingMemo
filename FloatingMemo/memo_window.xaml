@@ -25,7 +25,7 @@
                         </MenuItem>
                         <MenuItem x:Name="Change_titile" Header="タイトルの変更" Click="Change_titile_Click" />
                         <MenuItem x:Name="BackColorMenu_right" Header="背景色の変更" Click="BackColorMenu_right_Click"/>
-                        <MenuItem x:Name="titile_hidden_2" Header="タイトルの非表示" IsCheckable="True" Click="titile_hidden_Click"/>
+                        <MenuItem x:Name="titile_hidden_2" Header="タイトルの非表示" IsCheckable="True" Click="titile_hidden_Click_2"/>
                         <MenuItem x:Name="TopMost_bar" Header="常に最前面" IsCheckable="True" Click="TopMost_bar_Click"/>
                         <Separator/>
                         <MenuItem x:Name="property_menu" Header="プロパティ" Click="property_menu_Click"/>
