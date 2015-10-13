@@ -32,8 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NotifyIconWrapper));
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.notifyMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.exit_app = new System.Windows.Forms.ToolStripMenuItem();
             this.Add_new_memo = new System.Windows.Forms.ToolStripMenuItem();
+            this.exit_app = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.change_transportmode = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyMenu.SuspendLayout();
             // 
             // notifyIcon1
@@ -47,15 +49,11 @@
             // 
             this.notifyMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Add_new_memo,
+            this.change_transportmode,
+            this.toolStripSeparator1,
             this.exit_app});
             this.notifyMenu.Name = "notifyMenu";
-            this.notifyMenu.Size = new System.Drawing.Size(156, 48);
-            // 
-            // exit_app
-            // 
-            this.exit_app.Name = "exit_app";
-            this.exit_app.Size = new System.Drawing.Size(155, 22);
-            this.exit_app.Text = "終了";
+            this.notifyMenu.Size = new System.Drawing.Size(156, 54);
             // 
             // Add_new_memo
             // 
@@ -63,6 +61,25 @@
             this.Add_new_memo.Name = "Add_new_memo";
             this.Add_new_memo.Size = new System.Drawing.Size(155, 22);
             this.Add_new_memo.Text = "新しいメモを追加";
+            // 
+            // exit_app
+            // 
+            this.exit_app.Name = "exit_app";
+            this.exit_app.Size = new System.Drawing.Size(155, 22);
+            this.exit_app.Text = "終了";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(152, 6);
+            // 
+            // change_transportmode
+            // 
+            this.change_transportmode.CheckOnClick = true;
+            this.change_transportmode.Name = "change_transportmode";
+            this.change_transportmode.Size = new System.Drawing.Size(155, 22);
+            this.change_transportmode.Text = "透過モード";
+            this.change_transportmode.Click += new System.EventHandler(this.change_transportmode_Click);
             this.notifyMenu.ResumeLayout(false);
 
         }
@@ -73,5 +90,7 @@
         private System.Windows.Forms.ContextMenuStrip notifyMenu;
         private System.Windows.Forms.ToolStripMenuItem exit_app;
         private System.Windows.Forms.ToolStripMenuItem Add_new_memo;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem change_transportmode;
     }
 }

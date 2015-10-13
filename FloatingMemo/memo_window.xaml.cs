@@ -23,6 +23,10 @@ namespace FloatingMemo
         public memo_setting setting;
         public property_window property;
 
+        public Brush back;
+        public Brush default_memocolor;
+        public bool mouse_over;
+
         public memo_window()
         {
             InitializeComponent();
@@ -30,18 +34,12 @@ namespace FloatingMemo
             memo_textbox.Height = this.Height-28;
 
             setting = new memo_setting(this);
+            back = this.Background;
+            mouse_over = true;
 
-        }
-
-        private void GenerateID()
-        {
-            int seed = Environment.TickCount;
-            Random rad_1 = new Random(seed);
-            Random rad_2 = new Random(++seed);
-            int hex = Convert.ToInt32("0xFFFFFFFF", 10);
-            int intrand_1 = rad_1.Next(0,hex);
-            int intrand_2 = rad_2.Next(0, hex);
-            string str = string.Format("{0:X}{1:X}", intrand_1, intrand_2);
+            Color c = Color.FromRgb(0, 0, 0);
+            default_memocolor = new SolidColorBrush(c);
+            title_label.Foreground = default_memocolor;
 
         }
 
@@ -76,15 +74,38 @@ namespace FloatingMemo
             }
         }
 
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)  //移動
+        public void transport(bool enable)
         {
-            if (e.ButtonState != MouseButtonState.Pressed)
+            if (enable)
             {
-                return;
+                this.Background = Brushes.Transparent;
+                closebutton.Visibility = Visibility.Hidden;
+                menu_button.Visibility = Visibility.Hidden;
+                title_label.Foreground = setting.font_color;
+
+            }
+            else
+            {
+                this.Background = setting.back;
+                closebutton.Visibility = Visibility.Visible;
+                menu_button.Visibility = Visibility.Visible;
+                title_label.Foreground = default_memocolor;
             }
 
-            this.DragMove();
+            setting.Synchronism();
+        }
 
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)  //移動
+        {
+            if (!(setting.transport_enable))
+            {
+                if (e.ButtonState != MouseButtonState.Pressed)
+                {
+                    return;
+                }
+
+                this.DragMove();
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) //閉じるボタン
@@ -116,7 +137,7 @@ namespace FloatingMemo
             window.Show();
         }
 
-        private void memo_textcolor_Click(object sender, RoutedEventArgs e)
+        private void memo_textcolor_Click(object sender, RoutedEventArgs e) //フォント色変更
         {
             ColorDialog cd = new ColorDialog();
             if (cd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -124,6 +145,8 @@ namespace FloatingMemo
                 Color color = Color.FromArgb(cd.Color.A, cd.Color.R, cd.Color.G, cd.Color.B);
                 memo_textbox.Foreground = new SolidColorBrush(color);
             }
+
+            setting.Synchronism();
         }
                     
         private void BackColorMenu_right_Click(object sender, RoutedEventArgs e)    //背景色の変更
@@ -132,8 +155,13 @@ namespace FloatingMemo
             if (cd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 Color color = Color.FromArgb(cd.Color.A, cd.Color.R, cd.Color.G, cd.Color.B);
-                Background = new SolidColorBrush(color);
+                back = new SolidColorBrush(color);
+                if(!(setting.transport_enable))
+                {
+                    Background = back;
+                }
             }
+            setting.Synchronism();
         }
 
         private void titile_hidden_Click_2(object sender, RoutedEventArgs e)  //タイトル非表示
@@ -192,6 +220,22 @@ namespace FloatingMemo
         {
             property = new property_window(this);
             property.Show();
+        }
+
+        private void Window_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)    //メモの上にカーソルが乗る
+        {
+            if((mouse_over) & (!(setting.transport_enable)))
+            {
+                this.Opacity = 1.00;
+            }
+        }
+
+        private void Window_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)    //メモの上からカーソルが離れる
+        {
+            if ((mouse_over) & (!(setting.transport_enable)))
+            {
+                this.Opacity = setting.transper;
+            }
         }
     }
 }

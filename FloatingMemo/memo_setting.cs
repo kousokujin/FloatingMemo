@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace FloatingMemo
 {
@@ -15,6 +16,12 @@ namespace FloatingMemo
         public bool topmost;   //常に最前面
         public bool title_hidden; //タイトル非表示
         public string memoID;
+        public double transper; //透明度
+        public bool transport_enable; //透明化
+        public Brush back;
+        public Brush font_color;
+        public bool mouse_over;
+
 
         public memo_setting(memo_window memo_w)
         {
@@ -28,6 +35,10 @@ namespace FloatingMemo
             title = (string)memo.title_label.Content;
             content = memo.memo_textbox.Text;
             topmost = memo.Topmost;
+            transper = memo.Opacity;
+            back = memo.back;
+            font_color = memo.memo_textbox.Foreground;
+            mouse_over = memo.mouse_over;
 
             if(memo.title_label.Visibility == Visibility.Visible)
             {
@@ -36,6 +47,15 @@ namespace FloatingMemo
             else
             {
                 title_hidden = true;
+            }
+
+            if(memo.Background == Brushes.Transparent)  //背景透明
+            {
+                transport_enable = true;
+            }
+            else
+            {
+                transport_enable = false;
             }
 
             //デバッグ用

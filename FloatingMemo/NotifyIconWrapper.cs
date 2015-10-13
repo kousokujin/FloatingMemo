@@ -48,5 +48,16 @@ namespace FloatingMemo
             change.Show();     //タイトル名設定ウィンドウ表示
             memo_list.Add(new_window);
         }
+
+        private void change_transportmode_Click(object sender, EventArgs e)
+        {
+            foreach(memo_window i in memo_list)
+            {
+                if(i != null)
+                {
+                    i.transport(change_transportmode.Checked);
+                }
+            }
+        }
     }
 }
