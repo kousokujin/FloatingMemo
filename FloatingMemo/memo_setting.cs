@@ -21,6 +21,8 @@ namespace FloatingMemo
         public Brush back;
         public Brush font_color;
         public bool mouse_over;
+        public FontFamily font; //メモのフォント
+        public double fontsize; //メモのフォントの大きさ
 
 
         public memo_setting(memo_window memo_w)
@@ -39,6 +41,8 @@ namespace FloatingMemo
             back = memo.back;
             font_color = memo.memo_textbox.Foreground;
             mouse_over = memo.mouse_over;
+            font = memo.memo_textbox.FontFamily;
+            fontsize = memo.memo_textbox.FontSize;
 
             if(memo.title_label.Visibility == Visibility.Visible)
             {

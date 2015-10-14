@@ -28,9 +28,9 @@
         <Slider x:Name="opt_slider" HorizontalAlignment="Left" Margin="66,42,0,0" VerticalAlignment="Top" Maximum="100" ValueChanged="opt_slider_ValueChanged" Width="329" Value="10"/>
         <CheckBox x:Name="topmost_checkBox" Content="常に最前面" HorizontalAlignment="Left" Margin="21,78,0,0" VerticalAlignment="Top" Click="topmost_checkBox_Click"/>
         <CheckBox x:Name="titlehidden_checkbox" Content="タイトルの非表示" HorizontalAlignment="Left" Margin="21,98,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,1.867" Click="titlehidden_checkbox_Click"/>
-        <Button x:Name="button" Content="フォント変更" HorizontalAlignment="Left" Margin="318,75,0,0" VerticalAlignment="Top" Width="107"/>
-        <Button x:Name="button1" Content="フォントカラー変更" HorizontalAlignment="Left" Margin="318,99,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="-0.227,0.421"/>
-        <Button x:Name="button2" Content="背景色変更" HorizontalAlignment="Left" Margin="318,123,0,0" VerticalAlignment="Top" Width="107"/>
+        <Button x:Name="fontchange" Content="フォント変更" HorizontalAlignment="Left" Margin="318,75,0,0" VerticalAlignment="Top" Width="107" Click="fontchange_Click"/>
+        <Button x:Name="fontcolorchange" Content="フォントカラー変更" HorizontalAlignment="Left" Margin="318,99,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="-0.227,0.421" Click="fontcolorchange_Click"/>
+        <Button x:Name="backcolorchange" Content="背景色変更" HorizontalAlignment="Left" Margin="318,123,0,0" VerticalAlignment="Top" Width="107" Click="backcolorchange_Click"/>
         <Label x:Name="memoID_label" Content="Label" HorizontalAlignment="Left" Margin="0,182,0,0" VerticalAlignment="Top" Width="269" FontSize="9" Height="25"/>
         <Label x:Name="opt_label" HorizontalAlignment="Left" Margin="400,38,-18,0" VerticalAlignment="Top" Width="60" Content="100"/>
         <Button x:Name="OK_button" Content="OK" HorizontalAlignment="Left" Margin="362,182,0,0" VerticalAlignment="Top" Width="75" Click="OK_button_Click"/>

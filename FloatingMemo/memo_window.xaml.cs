@@ -45,18 +45,18 @@ namespace FloatingMemo
 
         public void syncpropartywindow()    //プロパティウィンドウとかと同期
         {
-            TopMost_bar.IsChecked=this.Topmost;
+            //TopMost_bar.IsChecked=this.Topmost;
             Topmost_Right.IsChecked = this.Topmost;
 
             if (this.title_label.Visibility == Visibility.Hidden)
             {
                 title_hidden.IsChecked = true;
-                titile_hidden_2.IsChecked = true;
+               // titile_hidden_2.IsChecked = true;
             }
             else
             {
                 title_hidden.IsChecked = false;
-                titile_hidden_2.IsChecked = false;
+               // titile_hidden_2.IsChecked = false;
             }
 
             if (property != null)
@@ -80,7 +80,8 @@ namespace FloatingMemo
             {
                 this.Background = Brushes.Transparent;
                 closebutton.Visibility = Visibility.Hidden;
-                menu_button.Visibility = Visibility.Hidden;
+                //   menu_button.Visibility = Visibility.Hidden;
+                minimaziebutton.Visibility = Visibility.Hidden;
                 title_label.Foreground = setting.font_color;
 
             }
@@ -88,7 +89,8 @@ namespace FloatingMemo
             {
                 this.Background = setting.back;
                 closebutton.Visibility = Visibility.Visible;
-                menu_button.Visibility = Visibility.Visible;
+                //    menu_button.Visibility = Visibility.Visible;
+                minimaziebutton.Visibility = Visibility.Visible;
                 title_label.Foreground = default_memocolor;
             }
 
@@ -129,6 +131,7 @@ namespace FloatingMemo
                 memo_textbox.FontFamily = new FontFamily(dlg.Font.FontFamily.Name);
                 memo_textbox.FontSize = dlg.Font.SizeInPoints;
             }
+            setting.Synchronism();
         }
 
         private void Change_titile_Click(object sender, RoutedEventArgs e)  //タイトル変更
@@ -164,6 +167,7 @@ namespace FloatingMemo
             setting.Synchronism();
         }
 
+        /*
         private void titile_hidden_Click_2(object sender, RoutedEventArgs e)  //タイトル非表示
         {
             if(titile_hidden_2.IsChecked)
@@ -181,8 +185,9 @@ namespace FloatingMemo
                 setting.Synchronism();
             }
         }
+        */
 
-        private void title_hidden_Click(object sender, RoutedEventArgs e)
+        private void title_hidden_Click(object sender, RoutedEventArgs e)   //タイトル非表示ボタン
         {
             if (title_hidden.IsChecked)
             {
@@ -200,6 +205,7 @@ namespace FloatingMemo
             }
         }
 
+        /*
         private void TopMost_bar_Click(object sender, RoutedEventArgs e)    //常に最前面
         {
             Topmost = TopMost_bar.IsChecked;
@@ -207,6 +213,7 @@ namespace FloatingMemo
             syncpropartywindow();
             setting.Synchronism();
         }
+        */
 
         private void Topmost_Right_Click(object sender, RoutedEventArgs e)
         {
@@ -216,7 +223,7 @@ namespace FloatingMemo
             setting.Synchronism();
         }
 
-        private void property_menu_Click(object sender, RoutedEventArgs e)
+        private void property_menu_Click(object sender, RoutedEventArgs e)  //プロパティウィンドウを開く
         {
             property = new property_window(this);
             property.Show();
@@ -236,6 +243,11 @@ namespace FloatingMemo
             {
                 this.Opacity = setting.transper;
             }
+        }
+
+        private void minimaziebutton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }

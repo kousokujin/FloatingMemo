@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Forms;
 
 namespace FloatingMemo
 {
@@ -53,7 +54,7 @@ namespace FloatingMemo
             setting.Synchronism();
         }
 
-        private void topmost_checkBox_Click(object sender, RoutedEventArgs e)
+        private void topmost_checkBox_Click(object sender, RoutedEventArgs e)   //常に最前面チェックボックス
         {
             if (topmost_checkBox.IsChecked == true)
             {
@@ -69,7 +70,7 @@ namespace FloatingMemo
             setting.Synchronism();
         }
 
-        private void titlehidden_checkbox_Click(object sender, RoutedEventArgs e)
+        private void titlehidden_checkbox_Click(object sender, RoutedEventArgs e)   //タイトル非表示チェックボックス
         {
             if(titlehidden_checkbox.IsChecked == true)
             {
@@ -102,7 +103,7 @@ namespace FloatingMemo
             Close();
         }
 
-        private void enable_mouseover_Click(object sender, RoutedEventArgs e)
+        private void enable_mouseover_Click(object sender, RoutedEventArgs e)   //マウスオーバー
         {
             if (enable_mouseover.IsChecked == true)
             {
@@ -110,6 +111,44 @@ namespace FloatingMemo
             }else
             {
                 memo.mouse_over = true;
+            }
+            setting.Synchronism();
+        }
+
+        private void fontcolorchange_Click(object sender, RoutedEventArgs e)    //フォントカラー変更
+        {
+            ColorDialog cd = new ColorDialog();
+            if (cd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Color color = Color.FromArgb(cd.Color.A, cd.Color.R, cd.Color.G, cd.Color.B);
+                memo.memo_textbox.Foreground = new SolidColorBrush(color);
+            }
+
+            setting.Synchronism();
+        }
+
+        private void backcolorchange_Click(object sender, RoutedEventArgs e)    //背景色変更
+        {
+            ColorDialog cd = new ColorDialog();
+            if (cd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Color color = Color.FromArgb(cd.Color.A, cd.Color.R, cd.Color.G, cd.Color.B);
+                memo.back = new SolidColorBrush(color);
+                if (!(setting.transport_enable))
+                {
+                    memo.Background = memo.back;
+                }
+            }
+            setting.Synchronism();
+        }
+
+        private void fontchange_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new FontDialog();
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                memo.memo_textbox.FontFamily = new FontFamily(dlg.Font.FontFamily.Name);
+                memo.memo_textbox.FontSize = dlg.Font.SizeInPoints;
             }
             setting.Synchronism();
         }
