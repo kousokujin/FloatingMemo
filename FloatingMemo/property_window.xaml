@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FloatingMemo"
         mc:Ignorable="d"
-        Title="property_window" Height="245.456" Width="472.012" ResizeMode="NoResize" WindowStyle="None" MouseLeftButtonDown="property_win_MouseLeftButtonDown" Padding="1,1,1,-1" BorderBrush="Gray" BorderThickness="1">
+        Title="property_window" Height="210.789" Width="446.012" ResizeMode="NoResize" WindowStyle="None" MouseLeftButtonDown="property_win_MouseLeftButtonDown" Padding="1,1,1,-1" BorderBrush="Gray" BorderThickness="1">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="{x:Static SystemParameters.CaptionHeight}"
@@ -25,16 +25,16 @@
         </StackPanel>
 
         <Label x:Name="label" Content="透明度&#xD;&#xA;" HorizontalAlignment="Left" Margin="21,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.067,-0.166" Height="27" Width="45"/>
-        <Slider x:Name="opt_slider" HorizontalAlignment="Left" Margin="71,44,0,0" VerticalAlignment="Top" Maximum="100" ValueChanged="opt_slider_ValueChanged" Width="329" Value="10"/>
+        <Slider x:Name="opt_slider" HorizontalAlignment="Left" Margin="66,42,0,0" VerticalAlignment="Top" Maximum="100" ValueChanged="opt_slider_ValueChanged" Width="329" Value="10"/>
         <CheckBox x:Name="topmost_checkBox" Content="常に最前面" HorizontalAlignment="Left" Margin="21,78,0,0" VerticalAlignment="Top" Click="topmost_checkBox_Click"/>
         <CheckBox x:Name="titlehidden_checkbox" Content="タイトルの非表示" HorizontalAlignment="Left" Margin="21,98,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.495,1.867" Click="titlehidden_checkbox_Click"/>
         <Button x:Name="button" Content="フォント変更" HorizontalAlignment="Left" Margin="318,75,0,0" VerticalAlignment="Top" Width="107"/>
         <Button x:Name="button1" Content="フォントカラー変更" HorizontalAlignment="Left" Margin="318,99,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="-0.227,0.421"/>
         <Button x:Name="button2" Content="背景色変更" HorizontalAlignment="Left" Margin="318,123,0,0" VerticalAlignment="Top" Width="107"/>
-        <Label x:Name="memoID_label" Content="Label" HorizontalAlignment="Left" Margin="0,220,0,0" VerticalAlignment="Top" Width="269" FontSize="9" Height="25"/>
-        <Label x:Name="opt_label" HorizontalAlignment="Left" Margin="400,40,0,0" VerticalAlignment="Top" Width="60" Content="100"/>
-        <Button x:Name="OK_button" Content="OK" HorizontalAlignment="Left" Margin="383,212,0,0" VerticalAlignment="Top" Width="75" Click="OK_button_Click"/>
-        <CheckBox x:Name="enable_mouseover" Content="マウスオーバーで透明にしない" HorizontalAlignment="Left" Margin="21,118,0,0" VerticalAlignment="Top" Click="enable_mouseover_Click"/>
+        <Label x:Name="memoID_label" Content="Label" HorizontalAlignment="Left" Margin="0,182,0,0" VerticalAlignment="Top" Width="269" FontSize="9" Height="25"/>
+        <Label x:Name="opt_label" HorizontalAlignment="Left" Margin="400,38,-18,0" VerticalAlignment="Top" Width="60" Content="100"/>
+        <Button x:Name="OK_button" Content="OK" HorizontalAlignment="Left" Margin="362,182,0,0" VerticalAlignment="Top" Width="75" Click="OK_button_Click"/>
+        <CheckBox x:Name="enable_mouseover" Content="マウスオーバーの無効化" HorizontalAlignment="Left" Margin="21,118,0,0" VerticalAlignment="Top" Click="enable_mouseover_Click"/>
 
     </Grid>
 </Window>
