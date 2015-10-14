@@ -33,7 +33,8 @@ namespace FloatingMemo
             memo_textbox.Width = this.Width;
             memo_textbox.Height = this.Height-28;
 
-            setting = new memo_setting(this);
+            setting = new memo_setting();
+            setting.setting(this);
             back = this.Background;
             mouse_over = true;
 

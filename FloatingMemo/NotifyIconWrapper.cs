@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+//using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows;
 
 namespace FloatingMemo
 {
@@ -31,6 +34,18 @@ namespace FloatingMemo
 
         private void exit_app_click(object sender,EventArgs e)  //タスクバーの終了ボタン
         {
+            if (memo_list != null)
+            {
+                foreach (memo_window i in memo_list)
+                {
+                    if (i != null)
+                    {
+                        //i.setting.set_save();
+                        //set_save(i);
+                    }
+                }
+            }
+
             App.Current.Shutdown();
         }
 
@@ -51,13 +66,38 @@ namespace FloatingMemo
 
         private void change_transportmode_Click(object sender, EventArgs e)
         {
-            foreach(memo_window i in memo_list)
+            if (memo_list != null)
             {
-                if(i != null)
+                foreach (memo_window i in memo_list)
                 {
-                    i.transport(change_transportmode.Checked);
+                    if (i != null)
+                    {
+                        i.transport(change_transportmode.Checked);
+                    }
                 }
             }
+        }
+
+        public void set_save(memo_window memo)  //設定ファイルの保存
+        {
+
+            memo.setting.p = memo.PointToScreen(new Point(0.0d, 0.0d));
+
+            //保存先のファイル名
+            string fileName = string.Format(@"{0}_setting.config", memo.setting.memoID);
+
+            //＜XMLファイルに書き込む＞
+            //XmlSerializerオブジェクトを作成
+            //書き込むオブジェクトの型を指定する
+            System.Xml.Serialization.XmlSerializer serializer =
+                new System.Xml.Serialization.XmlSerializer(typeof(memo_setting));
+            //ファイルを開く（UTF-8 BOM無し）
+            System.IO.StreamWriter sw = new System.IO.StreamWriter(
+                fileName, false, new System.Text.UTF8Encoding(false));
+            //シリアル化し、XMLファイルに保存する
+            serializer.Serialize(sw, memo.setting);
+            //閉じる
+            sw.Close();
         }
     }
 }
