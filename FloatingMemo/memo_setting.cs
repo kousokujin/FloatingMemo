@@ -12,7 +12,7 @@ namespace FloatingMemo
     public class memo_setting
     {
         public string title;   //タイトル
-        string content; //内容
+        public string content; //内容
         public bool topmost;   //常に最前面
         public bool title_hidden; //タイトル非表示
         public string memoID;
@@ -104,6 +104,8 @@ namespace FloatingMemo
         {
 
             p = memo.PointToScreen(new Point(0.0d, 0.0d));
+            save savesetting = new save();
+            savesetting.save_set(this);
 
             //保存先のファイル名
             string fileName = string.Format(@"{0}_setting.config",memoID);
@@ -111,15 +113,51 @@ namespace FloatingMemo
             //＜XMLファイルに書き込む＞
             //XmlSerializerオブジェクトを作成
             //書き込むオブジェクトの型を指定する
-            System.Xml.Serialization.XmlSerializer serializer =
-                new System.Xml.Serialization.XmlSerializer(typeof(memo_setting));
+            XmlSerializer serializer = new XmlSerializer(typeof(save));
             //ファイルを開く（UTF-8 BOM無し）
             System.IO.StreamWriter sw = new System.IO.StreamWriter(
                 fileName, false, new System.Text.UTF8Encoding(false));
             //シリアル化し、XMLファイルに保存する
-            serializer.Serialize(sw, this);
+            serializer.Serialize(sw, savesetting);
             //閉じる
             sw.Close();
+        }
+    }
+
+    public class save
+    {
+        public string title;   //タイトル
+        string content; //内容
+        public bool topmost;   //常に最前面
+        public bool title_hidden; //タイトル非表示
+        public string memoID;
+        public double transper; //透明度
+        public bool transport_enable; //透明化
+        public Brush back;
+        public Brush font_color;
+        public bool mouse_over;
+        public FontFamily font; //メモのフォント
+        public double fontsize; //メモのフォントの大きさ
+        public Point p; //メモの位置
+
+        [XmlIgnore]
+        public memo_setting set;
+
+        public void save_set(memo_setting s)
+        {
+            title = s.title;
+            content = s.content;
+            topmost = s.topmost;
+            title_hidden = s.title_hidden;
+            memoID = s.memoID;
+            transper = s.transper;
+            transport_enable = s.transport_enable;
+            back = s.back;
+            font_color = s.font_color;
+            mouse_over = s.mouse_over;
+            font = s.font;
+            fontsize = s.fontsize;
+            p = s.p;
         }
     }
 }
