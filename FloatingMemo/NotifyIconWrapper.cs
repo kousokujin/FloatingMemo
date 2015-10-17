@@ -38,8 +38,9 @@ namespace FloatingMemo
             {
                 foreach (memo_window i in memo_list)
                 {
-                    if (i != null)
+                    if (i.Visibility == Visibility.Visible)
                     {
+                        i.setting.Synchronism();
                         i.setting.set_save();
                     }
                 }
@@ -75,28 +76,10 @@ namespace FloatingMemo
                     }
                 }
             }
-        }
-
-        public void set_save(memo_window memo)  //設定ファイルの保存
-        {
-
-            memo.setting.p = memo.PointToScreen(new Point(0.0d, 0.0d));
-
-            //保存先のファイル名
-            string fileName = string.Format(@"{0}_setting.config", memo.setting.memoID);
-
-            //＜XMLファイルに書き込む＞
-            //XmlSerializerオブジェクトを作成
-            //書き込むオブジェクトの型を指定する
-            System.Xml.Serialization.XmlSerializer serializer =
-                new System.Xml.Serialization.XmlSerializer(typeof(memo_setting));
-            //ファイルを開く（UTF-8 BOM無し）
-            System.IO.StreamWriter sw = new System.IO.StreamWriter(
-                fileName, false, new System.Text.UTF8Encoding(false));
-            //シリアル化し、XMLファイルに保存する
-            serializer.Serialize(sw, memo.setting);
-            //閉じる
-            sw.Close();
+            else
+            {
+                System.Console.WriteLine("NULL");
+            }
         }
     }
 }

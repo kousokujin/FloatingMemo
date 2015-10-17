@@ -57,6 +57,7 @@ namespace FloatingMemo
             mouse_over = memo.mouse_over;
             font = memo.memo_textbox.FontFamily;
             fontsize = memo.memo_textbox.FontSize;
+            //p = memo.PointToScreen(new Point(0.0d, 0.0d));
 
             if (memo.title_label.Visibility == Visibility.Visible)
             {
@@ -104,16 +105,18 @@ namespace FloatingMemo
         public int set_save()  //設定ファイルの保存
         {
 
-            if(memo == null)
+            try
+            {
+                p = memo.PointToScreen(new Point(0.0d, 0.0d));
+            }
+            catch (System.InvalidOperationException)
             {
                 return 1;
             }
-
-           // p = memo.PointToScreen(new Point(0.0d, 0.0d));
             save savesetting = new save();
             savesetting.save_set(this);
 
-            string fileName = string.Format(@"{0}_setting.config", memoID);
+            string fileName = string.Format(@"memofile\{0}_setting.config", memoID);
 
 
             //＜XMLファイルに書き込む＞
@@ -122,7 +125,7 @@ namespace FloatingMemo
             XmlSerializer serializer = new XmlSerializer(typeof(save));
             //ファイルを開く（UTF-8 BOM無し）
             System.IO.StreamWriter sw = new System.IO.StreamWriter(
-                fileName, false, new System.Text.UTF8Encoding(false));
+            fileName, false, new System.Text.UTF8Encoding(false));
             //シリアル化し、XMLファイルに保存する
             serializer.Serialize(sw, savesetting);
             //閉じる
@@ -146,7 +149,7 @@ namespace FloatingMemo
         public bool mouse_over;
         public string font; //メモのフォント
         public double fontsize; //メモのフォントの大きさ
-       // public Point p; //メモの位置
+        public Point p; //メモの位置
 
         //[XmlIgnore]
         //public memo_setting set;
@@ -165,7 +168,7 @@ namespace FloatingMemo
             mouse_over = s.mouse_over;
             font = s.font.ToString();
             fontsize = s.fontsize;
-          //  p = s.p;
+            p = s.p;
         }
     }
 
