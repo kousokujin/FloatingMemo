@@ -107,8 +107,8 @@ namespace FloatingMemo
             save savesetting = new save();
             savesetting.save_set(this);
 
-            //保存先のファイル名
-            string fileName = string.Format(@"{0}_setting.config",memoID);
+            string fileName = string.Format(@"{0}_setting.config", memoID);
+
 
             //＜XMLファイルに書き込む＞
             //XmlSerializerオブジェクトを作成
@@ -133,15 +133,15 @@ namespace FloatingMemo
         public string memoID;
         public double transper; //透明度
         public bool transport_enable; //透明化
-        public Brush back;
-        public Brush font_color;
+        public my_color back;
+        public my_color font_color;
         public bool mouse_over;
-        public FontFamily font; //メモのフォント
+        //public FontFamily font; //メモのフォント
         public double fontsize; //メモのフォントの大きさ
         public Point p; //メモの位置
 
-        [XmlIgnore]
-        public memo_setting set;
+        //[XmlIgnore]
+        //public memo_setting set;
 
         public void save_set(memo_setting s)
         {
@@ -152,12 +152,28 @@ namespace FloatingMemo
             memoID = s.memoID;
             transper = s.transper;
             transport_enable = s.transport_enable;
-            back = s.back;
-            font_color = s.font_color;
+            back = new my_color(s.back);
+            font_color = new my_color(s.font_color);
             mouse_over = s.mouse_over;
-            font = s.font;
+            //font = s.font;
             fontsize = s.fontsize;
             p = s.p;
+        }
+    }
+
+    public struct my_color
+    {
+        public int R;
+        public int G;
+        public int B;
+
+        public my_color(Brush c)
+        {
+            SolidColorBrush scb = c as SolidColorBrush;
+
+            R = scb.Color.R;
+            G = scb.Color.G;
+            B = scb.Color.B;
         }
     }
 }
