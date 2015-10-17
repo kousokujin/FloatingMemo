@@ -29,21 +29,22 @@ namespace FloatingMemo
         memo_window memo;
 
 
-        /*
+
         public memo_setting(memo_window memo_w)
         {
             this.memo = memo_w;
             GenerateID();
             Synchronism();
         }
-        */
 
+        /*
         public void setting(memo_window memo_w)
         {
             this.memo = memo_w;
             GenerateID();
             Synchronism();
         }
+        */
 
         public void Synchronism()
         {
@@ -100,10 +101,15 @@ namespace FloatingMemo
             System.Console.WriteLine("GenerateID:{0}", memoID);
         }
 
-        public void set_save()  //設定ファイルの保存
+        public int set_save()  //設定ファイルの保存
         {
 
-            p = memo.PointToScreen(new Point(0.0d, 0.0d));
+            if(memo == null)
+            {
+                return 1;
+            }
+
+           // p = memo.PointToScreen(new Point(0.0d, 0.0d));
             save savesetting = new save();
             savesetting.save_set(this);
 
@@ -121,6 +127,8 @@ namespace FloatingMemo
             serializer.Serialize(sw, savesetting);
             //閉じる
             sw.Close();
+
+            return 0;
         }
     }
 
@@ -132,13 +140,13 @@ namespace FloatingMemo
         public bool title_hidden; //タイトル非表示
         public string memoID;
         public double transper; //透明度
-        public bool transport_enable; //透明化
+        //public bool transport_enable; //透明化
         public my_color back;
         public my_color font_color;
         public bool mouse_over;
-        //public FontFamily font; //メモのフォント
+        public string font; //メモのフォント
         public double fontsize; //メモのフォントの大きさ
-        public Point p; //メモの位置
+       // public Point p; //メモの位置
 
         //[XmlIgnore]
         //public memo_setting set;
@@ -151,13 +159,13 @@ namespace FloatingMemo
             title_hidden = s.title_hidden;
             memoID = s.memoID;
             transper = s.transper;
-            transport_enable = s.transport_enable;
+            //transport_enable = s.transport_enable;
             back = new my_color(s.back);
             font_color = new my_color(s.font_color);
             mouse_over = s.mouse_over;
-            //font = s.font;
+            font = s.font.ToString();
             fontsize = s.fontsize;
-            p = s.p;
+          //  p = s.p;
         }
     }
 

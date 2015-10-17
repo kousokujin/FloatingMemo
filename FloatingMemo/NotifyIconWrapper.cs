@@ -41,7 +41,6 @@ namespace FloatingMemo
                     if (i != null)
                     {
                         i.setting.set_save();
-                        //set_save(i);
                     }
                 }
             }
