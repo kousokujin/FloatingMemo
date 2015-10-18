@@ -157,7 +157,7 @@ namespace FloatingMemo
             {
                 Color color = Color.FromArgb(cd.Color.A, cd.Color.R, cd.Color.G, cd.Color.B);
                 memo_textbox.Foreground = new SolidColorBrush(color);
-                default_memocolor = new SolidColorBrush(color);
+                //default_memocolor = new SolidColorBrush(color);
             }
 
             setting.Synchronism();

@@ -53,7 +53,7 @@ namespace FloatingMemo
             }
 
             new_memo.memo_textbox.Foreground = Convertbrash(savefile.font_color);
-            new_memo.default_memocolor = Convertbrash(savefile.font_color);
+            //new_memo.default_memocolor = Convertbrash(savefile.font_color);
 
             new_memo.Background = Convertbrash(savefile.back);
             new_memo.back = Convertbrash(savefile.back);
@@ -61,7 +61,11 @@ namespace FloatingMemo
             new_memo.memo_textbox.FontFamily = new FontFamily(savefile.font);
             new_memo.memo_textbox.FontSize = savefile.fontsize;
 
+            new_memo.Top = savefile.p.Y;
+            new_memo.Left = savefile.p.X;
+
             new_memo.setting.Synchronism();
+            
 
             return new_memo;
         }
