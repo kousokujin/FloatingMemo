@@ -65,6 +65,11 @@ namespace FloatingMemo
             new_memo.Top = savefile.p.Y;
             new_memo.Left = savefile.p.X;
 
+            new_memo.Height = savefile.height;
+            new_memo.memo_textbox.Height = savefile.width - 28;
+            new_memo.Width = savefile.width;
+            new_memo.memo_textbox.Width = savefile.width;
+
             new_memo.setting.Synchronism();
             
 

@@ -24,6 +24,8 @@ namespace FloatingMemo
         public FontFamily font; //メモのフォント
         public double fontsize; //メモのフォントの大きさ
         public Point p; //メモの位置
+        public double width;   //メモの横幅
+        public double height;  //メモの高さ
 
         //[XmlIgnore]
         memo_window memo;
@@ -48,6 +50,8 @@ namespace FloatingMemo
             mouse_over = memo.mouse_over;
             font = memo.memo_textbox.FontFamily;
             fontsize = memo.memo_textbox.FontSize;
+            width = memo.Width;
+            height = memo.Height;
 
             if (memo.title_label.Visibility == Visibility.Visible)
             {
@@ -138,6 +142,8 @@ namespace FloatingMemo
         public string font; //メモのフォント
         public double fontsize; //メモのフォントの大きさ
         public Point p; //メモの位置
+        public double width;   //メモの横幅
+        public double height;  //メモの高さ
 
 
         public void save_set(memo_setting s)
@@ -154,6 +160,8 @@ namespace FloatingMemo
             font = s.font.ToString();
             fontsize = s.fontsize;
             p = s.p;
+            width= s.width;
+            height = s.height;
         }
     }
 
