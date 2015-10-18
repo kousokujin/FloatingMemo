@@ -159,14 +159,16 @@ namespace FloatingMemo
 
     public struct my_color
     {
-        public int R;
-        public int G;
-        public int B;
+        public byte A;
+        public byte R;
+        public byte G;
+        public byte B;
 
         public my_color(Brush c)
         {
             SolidColorBrush scb = c as SolidColorBrush;
 
+            A = scb.Color.A;
             R = scb.Color.R;
             G = scb.Color.G;
             B = scb.Color.B;

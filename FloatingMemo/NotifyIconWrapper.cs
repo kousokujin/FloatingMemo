@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+//using System.Drawing;
 using System.Windows;
 using System.IO;
 
@@ -36,8 +37,41 @@ namespace FloatingMemo
             new_memo.title_label.Content = savefile.title;
             new_memo.memo_textbox.Text = savefile.content;
             new_memo.Topmost = savefile.topmost;
+            new_memo.Opacity = savefile.transper;
+            new_memo.mouse_over = savefile.mouse_over;
+
+            new_memo.title_hidden.IsChecked = savefile.title_hidden;
+            new_memo.Topmost_Right.IsChecked = savefile.topmost;
+
+            if (savefile.title_hidden)
+            {
+                new_memo.title_label.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                new_memo.title_label.Visibility = Visibility.Visible;
+            }
+
+            new_memo.memo_textbox.Foreground = Convertbrash(savefile.font_color);
+            new_memo.default_memocolor = Convertbrash(savefile.font_color);
+
+            new_memo.Background = Convertbrash(savefile.back);
+            new_memo.back = Convertbrash(savefile.back);
+
+            new_memo.memo_textbox.FontFamily = new FontFamily(savefile.font);
+            new_memo.memo_textbox.FontSize = savefile.fontsize;
+
+            new_memo.setting.Synchronism();
 
             return new_memo;
+        }
+
+        private Brush Convertbrash(my_color c)
+        {
+            Color memofontcolor = Color.FromArgb(c.A,c.R,c.G,c.B);
+            Brush output = new SolidColorBrush(memofontcolor);
+
+            return output;
         }
 
         //---------以下イベント------------------
@@ -45,15 +79,46 @@ namespace FloatingMemo
         {
             InitializeComponent();
 
-            this.exit_app.Click += this.exit_app_click; //終了イベント
-            this.Add_new_memo.Click += this.add_memo_click; //新規メモ作成イベント
-
-            string[] dir = Directory.GetFiles(@"memofile", "*_setting.config", SearchOption.AllDirectories);
-            foreach (string i in dir)
+            if (!File.Exists("memofile"))   //memofileフォルダがなかったら作成
             {
-                Console.WriteLine(i);
+                Directory.CreateDirectory("memofile");
             }
 
+            bool existfile = false;
+            this.exit_app.Click += this.exit_app_click; //終了イベント
+            this.Add_new_memo.Click += this.add_memo_click; //新規メモ作成イベント
+            string[] dir = Directory.GetFiles(@"memofile", "*_setting.config", SearchOption.AllDirectories);
+
+            foreach (string i in dir)
+            {
+                 
+                Console.WriteLine(i);
+                memo_window newmemo = loadsave(i);
+
+                if (memo_list == null)
+                {
+                    memo_list = new List<memo_window>();
+                }
+
+                memo_list.Add(newmemo);
+                newmemo.Show();
+
+                existfile = true;
+            }
+
+            if (!existfile) //1つもない時
+            {
+
+                memo_window new_window = new memo_window();
+
+                if (memo_list == null)
+                {
+                    memo_list = new List<memo_window>();
+                }
+
+                new_window.Show();
+                memo_list.Add(new_window);
+            }
             Console.WriteLine("ok");
 
         }

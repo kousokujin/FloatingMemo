@@ -115,6 +115,14 @@ namespace FloatingMemo
         private void Button_Click(object sender, RoutedEventArgs e) //閉じるボタン
         {
             System.Console.WriteLine("close:{0}",setting.memoID);
+            string filename = string.Format(@"memofile\{0}_setting.config", setting.memoID);
+
+            if(System.IO.File.Exists(filename))
+            {
+                System.IO.File.Delete(filename);
+                System.Console.WriteLine("delete");
+            }
+
             this.Close();
         }
 
@@ -149,6 +157,7 @@ namespace FloatingMemo
             {
                 Color color = Color.FromArgb(cd.Color.A, cd.Color.R, cd.Color.G, cd.Color.B);
                 memo_textbox.Foreground = new SolidColorBrush(color);
+                default_memocolor = new SolidColorBrush(color);
             }
 
             setting.Synchronism();
