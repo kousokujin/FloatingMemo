@@ -29,22 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NotifyIconWrapper));
             System.Windows.Forms.ContextMenuStrip notifyMenu;
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NotifyIconWrapper));
             this.Add_new_memo = new System.Windows.Forms.ToolStripMenuItem();
             this.change_transportmode = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exit_app = new System.Windows.Forms.ToolStripMenuItem();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.about_version = new System.Windows.Forms.ToolStripMenuItem();
             notifyMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             notifyMenu.SuspendLayout();
-            // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.ContextMenuStrip = notifyMenu;
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "lentum";
-            this.notifyIcon1.Visible = true;
             // 
             // notifyMenu
             // 
@@ -52,9 +46,10 @@
             this.Add_new_memo,
             this.change_transportmode,
             this.toolStripSeparator1,
+            this.about_version,
             this.exit_app});
             notifyMenu.Name = "notifyMenu";
-            notifyMenu.Size = new System.Drawing.Size(156, 54);
+            notifyMenu.Size = new System.Drawing.Size(156, 98);
             // 
             // Add_new_memo
             // 
@@ -81,6 +76,20 @@
             this.exit_app.Name = "exit_app";
             this.exit_app.Size = new System.Drawing.Size(155, 22);
             this.exit_app.Text = "終了";
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.ContextMenuStrip = notifyMenu;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "lentum";
+            this.notifyIcon1.Visible = true;
+            // 
+            // about_version
+            // 
+            this.about_version.Name = "about_version";
+            this.about_version.Size = new System.Drawing.Size(155, 22);
+            this.about_version.Text = "lentumについて";
+            this.about_version.Click += new System.EventHandler(this.about_version_Click);
             notifyMenu.ResumeLayout(false);
 
         }
@@ -92,5 +101,6 @@
         private System.Windows.Forms.ToolStripMenuItem Add_new_memo;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem change_transportmode;
+        private System.Windows.Forms.ToolStripMenuItem about_version;
     }
 }

@@ -76,6 +76,9 @@
     <Compile Include="property_window.xaml.cs">
       <DependentUpon>property_window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="version.xaml.cs">
+      <DependentUpon>version.xaml</DependentUpon>
+    </Compile>
     <Page Include="change_titile_window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -100,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="property_window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="version.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

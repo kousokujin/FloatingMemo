@@ -17,6 +17,7 @@ namespace FloatingMemo
     {
 
         public List<memo_window> memo_list = null;
+        version verwindow;
 
         private memo_window loadsave(string filename)   //saveクラスを生成してそこからmemo_windowクラスを作る
         {
@@ -179,6 +180,24 @@ namespace FloatingMemo
                     }
                 }
             }
+        }
+
+        private void about_version_Click(object sender, EventArgs e)
+        {
+            //verwindow = new version();
+            if(verwindow == null)
+            {
+                verwindow = new version();
+            }
+
+
+            if (!verwindow.IsLoaded)
+            {
+                verwindow = new version();
+                verwindow.Show();
+            }
+            verwindow.Focus();
+
         }
     }
 }
