@@ -24,13 +24,6 @@ namespace FloatingMemo
         public MainWindow()
         {
             InitializeComponent();
-            string pass = "memofile";
-            string[] dir = Directory.GetFiles(@"memofile", "*_setting.config", SearchOption.AllDirectories);
-            foreach (string i in dir)
-            {
-                Console.WriteLine(i);
-            }
-            Console.WriteLine(pass.Length);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

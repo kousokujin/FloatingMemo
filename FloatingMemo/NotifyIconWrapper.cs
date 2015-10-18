@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows;
+using System.IO;
 
 namespace FloatingMemo
 {
@@ -16,6 +17,29 @@ namespace FloatingMemo
 
         public List<memo_window> memo_list = null;
 
+        private memo_window loadsave(string filename)   //saveクラスを生成してそこからmemo_windowクラスを作る
+        {
+            string fileName = @filename;
+            save savefile;
+
+            //＜XMLファイルから読み込む＞
+            //XmlSerializerオブジェクトの作成
+            System.Xml.Serialization.XmlSerializer serializer2 = new System.Xml.Serialization.XmlSerializer(typeof(save));
+            //ファイルを開く
+            System.IO.StreamReader sr = new System.IO.StreamReader(fileName, new System.Text.UTF8Encoding(false));
+            //XMLファイルから読み込み、逆シリアル化する
+            savefile = (save)serializer2.Deserialize(sr);
+            //閉じる
+            sr.Close();
+
+            memo_window new_memo = new memo_window(savefile.memoID);
+            new_memo.title_label.Content = savefile.title;
+            new_memo.memo_textbox.Text = savefile.content;
+            new_memo.Topmost = savefile.topmost;
+
+            return new_memo;
+        }
+
         //---------以下イベント------------------
         public NotifyIconWrapper()
         {
@@ -23,6 +47,15 @@ namespace FloatingMemo
 
             this.exit_app.Click += this.exit_app_click; //終了イベント
             this.Add_new_memo.Click += this.add_memo_click; //新規メモ作成イベント
+
+            string[] dir = Directory.GetFiles(@"memofile", "*_setting.config", SearchOption.AllDirectories);
+            foreach (string i in dir)
+            {
+                Console.WriteLine(i);
+            }
+
+            Console.WriteLine("ok");
+
         }
 
         public NotifyIconWrapper(IContainer container)
@@ -30,6 +63,7 @@ namespace FloatingMemo
             container.Add(this);
 
             InitializeComponent();
+
         }
 
         private void exit_app_click(object sender,EventArgs e)  //タスクバーの終了ボタン

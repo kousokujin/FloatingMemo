@@ -127,7 +127,7 @@ namespace FloatingMemo
     public class save
     {
         public string title;   //タイトル
-        string content; //内容
+        public string content; //内容
         public bool topmost;   //常に最前面
         public bool title_hidden; //タイトル非表示
         public string memoID;
