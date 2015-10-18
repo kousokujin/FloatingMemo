@@ -1,7 +1,7 @@
 ﻿<Window x:Class="FloatingMemo.memo_window"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="memo_window" Height="181.863" Width="279.921" MouseLeftButtonDown="Window_MouseLeftButtonDown" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" SizeChanged="Window_SizeChanged" Background="#FFE9F790" WindowStyle="None" AllowsTransparency="True" MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave">
+        Title="memo_window" Height="181.863" Width="279.921" MouseLeftButtonDown="Window_MouseLeftButtonDown" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" SizeChanged="Window_SizeChanged" Background="#FFE9F790" WindowStyle="None" AllowsTransparency="True" MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave" Icon="lentum.ico">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="{x:Static SystemParameters.CaptionHeight}"

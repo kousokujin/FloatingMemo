@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FloatingMemo"
         mc:Ignorable="d"
-        Title="change_titile_window" Height="69.255" Width="455.133" ResizeMode="NoResize" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown" BorderBrush="Gray" BorderThickness="1">
+        Title="change_titile_window" Height="69.255" Width="455.133" ResizeMode="NoResize" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown" BorderBrush="Gray" BorderThickness="1" Icon="lentum.ico">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="{x:Static SystemParameters.CaptionHeight}"
