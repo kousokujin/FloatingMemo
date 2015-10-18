@@ -27,7 +27,7 @@ namespace FloatingMemo
         public Brush default_memocolor;
         public bool mouse_over;
 
-        public memo_window()
+        public memo_window(string id = "0")
         {
             InitializeComponent();
             memo_textbox.Width = this.Width;
@@ -41,22 +41,24 @@ namespace FloatingMemo
             default_memocolor = new SolidColorBrush(c);
             title_label.Foreground = default_memocolor;
 
+            if(id != "0")
+            {
+                setting.memoID = id;
+            }
+
         }
 
         public void syncpropartywindow()    //プロパティウィンドウとかと同期
         {
-            //TopMost_bar.IsChecked=this.Topmost;
             Topmost_Right.IsChecked = this.Topmost;
 
             if (this.title_label.Visibility == Visibility.Hidden)
             {
                 title_hidden.IsChecked = true;
-               // titile_hidden_2.IsChecked = true;
             }
             else
             {
                 title_hidden.IsChecked = false;
-               // titile_hidden_2.IsChecked = false;
             }
 
             if (property != null)
@@ -167,26 +169,6 @@ namespace FloatingMemo
             setting.Synchronism();
         }
 
-        /*
-        private void titile_hidden_Click_2(object sender, RoutedEventArgs e)  //タイトル非表示
-        {
-            if(titile_hidden_2.IsChecked)
-            {
-                title_label.Visibility = Visibility.Hidden;
-                //title_hidden.IsChecked = true;
-                syncpropartywindow();
-                setting.Synchronism();
-            }
-            else
-            {
-                title_label.Visibility = Visibility.Visible;
-               // title_hidden.IsChecked = false;
-                syncpropartywindow();
-                setting.Synchronism();
-            }
-        }
-        */
-
         private void title_hidden_Click(object sender, RoutedEventArgs e)   //タイトル非表示ボタン
         {
             if (title_hidden.IsChecked)
@@ -204,16 +186,6 @@ namespace FloatingMemo
                 setting.Synchronism();
             }
         }
-
-        /*
-        private void TopMost_bar_Click(object sender, RoutedEventArgs e)    //常に最前面
-        {
-            Topmost = TopMost_bar.IsChecked;
-            //Topmost_Right.IsChecked = TopMost_bar.IsChecked;
-            syncpropartywindow();
-            setting.Synchronism();
-        }
-        */
 
         private void Topmost_Right_Click(object sender, RoutedEventArgs e)
         {

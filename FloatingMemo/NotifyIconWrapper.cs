@@ -38,7 +38,7 @@ namespace FloatingMemo
             {
                 foreach (memo_window i in memo_list)
                 {
-                    if (i.Visibility == Visibility.Visible)
+                    if (i != null)
                     {
                         i.setting.Synchronism();
                         i.setting.set_save();
@@ -75,10 +75,6 @@ namespace FloatingMemo
                         i.transport(change_transportmode.Checked);
                     }
                 }
-            }
-            else
-            {
-                System.Console.WriteLine("NULL");
             }
         }
     }
