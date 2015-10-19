@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77EAEE5E-E937-419C-B1BD-DD9F1949CFAB}"
 	ProjectSection(SolutionItems) = preProject
 		FloatingMemo\lentum.ico = FloatingMemo\lentum.ico
+		readme.md = readme.md
 	EndProjectSection
 EndProject
 Global
