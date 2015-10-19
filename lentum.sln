@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lentum", "FloatingMemo\lent
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77EAEE5E-E937-419C-B1BD-DD9F1949CFAB}"
 	ProjectSection(SolutionItems) = preProject
+		picture\disabletransport.png = picture\disabletransport.png
+		picture\enabletransport.png = picture\enabletransport.png
 		FloatingMemo\lentum.ico = FloatingMemo\lentum.ico
 		readme.md = readme.md
 	EndProjectSection
