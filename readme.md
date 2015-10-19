@@ -9,7 +9,7 @@ lentumはデスクトップ上に付箋のようにメモを表示するアプリケーションです。
 
 #透過モード
 こうなってたのが  
-![screenshot](https://raw.githubusercontent.com/kousokujin/FloatingMemo/master/picture/disabletransport.png)
+![screenshot](https://raw.githubusercontent.com/kousokujin/FloatingMemo/master/picture/disabletransport.png)  
 こうなります  
 ![screenshot](https://raw.githubusercontent.com/kousokujin/FloatingMemo/master/picture/enabletransport.png)
   
