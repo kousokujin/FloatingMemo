@@ -8,9 +8,9 @@ lentumはデスクトップ上に付箋のようにメモを表示するアプリケーションです。
 タスクトレイの終了ボタンを押すとその時のメモが保存されて次に起動した時同じ状態で起動します。
 
 #透過モード
-こうなってたのが
+こうなってたのが  
 ![screenshot](https://raw.githubusercontent.com/kousokujin/FloatingMemo/master/picture/disabletransport.png)
-こうなります
+こうなります  
 ![screenshot](https://raw.githubusercontent.com/kousokujin/FloatingMemo/master/picture/enabletransport.png)
   
 #ライセンス
