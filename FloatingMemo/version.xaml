@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FloatingMemo"
         mc:Ignorable="d"
-        Title="version" Height="210.084" Width="357.143" WindowStyle="None" Background="#FFF5FDA1" ResizeMode="NoResize" Padding="0" Margin="1" BorderThickness="1" BorderBrush="LightGray">
+        Title="version" Height="210.084" Width="389.143" WindowStyle="None" Background="#FFF5FDA1" ResizeMode="NoResize" Padding="0" Margin="1" BorderThickness="1" BorderBrush="LightGray">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="{x:Static SystemParameters.CaptionHeight}"
@@ -22,11 +22,18 @@
                         VerticalAlignment="Top">
             <Button x:Name="close_button" Content="r" FontSize="12" Style="{DynamicResource CaptionButtonStyleKey}" Click="close_button_Click"/>
         </StackPanel>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="32" Margin="96,60,0,0" VerticalAlignment="Top" Width="32" Source="lentum.ico"/>
-        <Label x:Name="apptitle_label" Content="lentum" HorizontalAlignment="Left" Margin="142,60,0,0" VerticalAlignment="Top" Width="106" Height="32" FontSize="20" FontWeight="Bold"/>
-        <Label x:Name="versionlabel" Content="version 1.0.0.0" HorizontalAlignment="Left" Margin="96,97,0,0" VerticalAlignment="Top" Width="128"/>
-        <Label x:Name="label" Content="Copyright(C) 2015 kousokujin" HorizontalAlignment="Left" Margin="96,122,0,0" VerticalAlignment="Top" Width="189"/>
-        <Button x:Name="OK_button" Content="OK" HorizontalAlignment="Left" Margin="270,179,0,0" VerticalAlignment="Top" Width="75" Click="OK_button_Click" IsDefault="True"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="32" Margin="114,60,0,0" VerticalAlignment="Top" Width="32" Source="lentum.ico"/>
+        <Label x:Name="apptitle_label" Content="lentum" HorizontalAlignment="Left" Margin="161,60,0,0" VerticalAlignment="Top" Width="106" Height="32" FontSize="20" FontWeight="Bold"/>
+        <Label x:Name="versionlabel" Content="version 1.0.0.0" HorizontalAlignment="Left" Margin="114,97,0,0" VerticalAlignment="Top" Width="128"/>
+        <Label x:Name="label" Content="Copyright(C) 2015 kousokujin" HorizontalAlignment="Left" Margin="114,122,0,0" VerticalAlignment="Top" Width="189"/>
+        <Button x:Name="OK_button" Content="OK" HorizontalAlignment="Left" Margin="307,184,0,0" VerticalAlignment="Top" Width="75" Click="OK_button_Click" IsDefault="True" RenderTransformOrigin="0.92,0.579"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="5,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="297" Height="19">
+            This software is licensed under the
+            <Hyperlink x:Name="MITlink" Click="MITlink_Click" >
+            MIT license
+            </Hyperlink>
+            .
+        </TextBlock>
 
     </Grid>
 </Window>

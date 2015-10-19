@@ -34,5 +34,10 @@ namespace FloatingMemo
         {
             Close();
         }
+
+        private void MITlink_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://opensource.org/licenses/mit-license.php");
+        }
     }
 }
