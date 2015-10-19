@@ -12,6 +12,10 @@ lentumはデスクトップ上に付箋のようにメモを表示するアプリケーションです。
 ![screenshot](https://raw.githubusercontent.com/kousokujin/FloatingMemo/master/picture/disabletransport.png)  
 こうなります  
 ![screenshot](https://raw.githubusercontent.com/kousokujin/FloatingMemo/master/picture/enabletransport.png)
+
+#ダウンロード
+下からダウンロードできます  
+<https://github.com/kousokujin/lentum/releases>
   
 #ライセンス
 Copyright (c) 2015 kousokujin  
